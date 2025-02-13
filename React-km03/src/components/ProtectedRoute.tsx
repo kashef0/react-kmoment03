@@ -2,6 +2,8 @@ import { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 
+
+
 interface ProtectedRouteProps {
     children: ReactNode
 }
@@ -16,13 +18,11 @@ const ProtectedRoute : React.FC<ProtectedRouteProps> = ( {children} ) => {
 
     return (
         <>
-         {children}
+        {children}
         </>
-   
         
     )
-        
-    
+
 }
 
 export default ProtectedRoute;

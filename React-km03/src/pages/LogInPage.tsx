@@ -1,15 +1,14 @@
 
-
 import { useEffect, useState } from "react";
-import useAuth from "../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
+
 
 
 const LogInPage = () => {
     const [formData, setFormData] = useState({email: '', password: ''});
-   
+    const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
-
     const {login, user} = useAuth();
     const navigate = useNavigate();
 
@@ -17,19 +16,22 @@ const LogInPage = () => {
         if (user) {
             navigate("/Profile");
         }
-    }, [user])
+    }, [user, navigate])
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setError('');
-
+        setIsLoading(true);
         try {
             await login(formData);
+            console.log(formData);
             console.log('Login successful');
             navigate("/Profile");
         } catch (error) {
             setError("inloggning misslyckades..");
             console.error(error);
+        }finally {
+            setIsLoading(false);
         }
     }
     return (
@@ -48,7 +50,9 @@ const LogInPage = () => {
                 placeholder="Password"
                 required
             />
-            <button type="submit">Submit</button>
+            <button type="submit" disabled={isLoading}>
+                {isLoading ? "Loading..." : "Submit"}
+            </button>
         </form>
     );
 }

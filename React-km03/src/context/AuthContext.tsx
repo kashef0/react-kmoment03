@@ -28,9 +28,12 @@ export const AuthProvider: React.FC<AuthProvidersProps> = ( {children} ) => {
                 throw new Error("inlogning misslyckades"); // Ensure an error is thrown
             }
             const data = await res.json() as AuthResponse;
-
+            console.log("API Data:", data);
             localStorage.setItem("token", data.token);
-            setUser(data.user);
+            console.log("User before setUser:", user);
+            setUser({...data.user});
+            console.log("User after setUser:", user);
+
         } catch (error) {
             console.error("Login failed:", error);
             throw error;
@@ -41,8 +44,6 @@ export const AuthProvider: React.FC<AuthProvidersProps> = ( {children} ) => {
         localStorage.removeItem("token");
         setUser(null);
     }
-
-
     
 
     return (
