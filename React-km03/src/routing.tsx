@@ -4,6 +4,8 @@ import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Profile from "./pages/Profile";
 import LogInPage from "./pages/LogInPage";
+import CategoryPage from "./pages/CategoryPage";
+import AddCategoryPage from "./pages/AddCategoryPage";
 
 const router = createBrowserRouter([
     {
@@ -24,6 +26,24 @@ const router = createBrowserRouter([
                 element: (
                     <ProtectedRoute>
                         <Profile />
+                    </ProtectedRoute>
+                )
+                
+            },
+            {
+                path: "/CategoryPage",
+                element: (
+                    <ProtectedRoute>
+                        <CategoryPage />
+                    </ProtectedRoute>
+                )
+                
+            },
+            {
+                path: "/AddCategoryPage",
+                element: (
+                    <ProtectedRoute>
+                        <AddCategoryPage />
                     </ProtectedRoute>
                 )
                 

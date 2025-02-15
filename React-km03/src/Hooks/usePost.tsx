@@ -1,0 +1,53 @@
+import { useEffect, useState } from "react";
+
+// hook för att hantera post förfrågningar
+export default function usePost<T>(url: string) : {
+    data: T,                  // hämtade datan
+    error: string | null,     // felmeddelande
+    loading: boolean,         // Indikerar om förfrågan är pågående
+    postData: (req: T) => Promise<void>  //  skicka post förfrågan
+} {
+
+    // State för data, error och loading
+    const [data, setData] = useState<T>([] as T);    
+    const [error, setError] = useState<string | null>(null);  
+    const [loading, setLoading] = useState<boolean>(false);
+
+    //trigga postData när url ändras
+    useEffect(() => {
+        postData(data);  // Skickar post förfrågan med data
+    }, [url]);
+
+    // skicka post förfrågan
+    const postData = async (req: T) => {
+        setLoading(true); 
+
+        try {
+            const token = localStorage.getItem("token");  // Hämta token
+            const response = await fetch(url, {
+                method: 'POST',  
+                headers: {
+                    'Content-Type': 'application/json',   
+                    'Authorization': `Bearer ${token}`,   
+                },
+                body: JSON.stringify(req),  
+            });
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw Error("Fel vid hämtning av data" + response.status + errorText);
+            }
+
+            const responseData = await response.json();  // Spara data
+            setData(responseData);
+        } catch (error) {
+            console.error("Fel:", error);  
+            setError("Kunde inte hämta data.");
+        } finally {
+            setLoading(false);  
+        }
+    };
+
+    // Returnera alla data och funktioner
+    return {data, error, loading, postData};
+}

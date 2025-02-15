@@ -24,9 +24,7 @@ const LogInPage = () => {
         setIsLoading(true);
         try {
             await login(formData);
-            console.log(formData);
             console.log('Login successful');
-            navigate("/Profile");
         } catch (error) {
             setError("inloggning misslyckades..");
             console.error(error);
@@ -51,7 +49,7 @@ const LogInPage = () => {
                 required
             />
             <button type="submit" disabled={isLoading}>
-                {isLoading ? "Loading..." : "Submit"}
+                {isLoading ? "Laddar..." : "Shickar"}
             </button>
         </form>
     );

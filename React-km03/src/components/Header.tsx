@@ -4,9 +4,10 @@ const Header = () => {
   return (
     <header>
         <ul>
-            <li><NavLink to="/">StartSida</NavLink></li>
-            <li><NavLink to="/LoginPage">Login</NavLink></li>
-            <li><NavLink to="/Profile">profile</NavLink></li>
+        <li><NavLink to="/">StartSida</NavLink></li>
+        <li><NavLink to="/LoginPage">Logga in</NavLink></li>
+        <li><NavLink to="/Profile">Profil</NavLink></li>
+        <li><NavLink to="/CategoryPage">Kategorier</NavLink></li>
         </ul>
     </header>
   )
