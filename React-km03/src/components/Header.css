@@ -1,0 +1,43 @@
+header { 
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #333;
+    padding: 1rem;
+}
+
+header ul {
+    display: flex;
+    list-style: none;
+    width: 100%;
+}
+
+.btn {
+    background-color: transparent;
+    color: white;
+    text-decoration: none; 
+    padding: 1.5rem;
+    transition: all .3s; 
+    
+}
+
+.nav-right {
+    display: flex;
+    justify-content: end;
+}
+li {
+    padding: .5rem 0;
+    align-self: center;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+    transition: all .3s;
+    padding: 1.5rem;
+}
+
+.link:hover, .btn:hover {
+    background-color: brown;
+    
+}

@@ -1,4 +1,4 @@
-/* Container for all the cards */
+
 .card-container {
   display: flex;
   flex-direction: row;
@@ -6,7 +6,7 @@
   padding: 20px;
 }
 
-/* Each card styling */
+
 .category-card {
   background-color: white;
   width: 300px;
@@ -20,12 +20,11 @@
   border: 1px solid #ddd;
 }
 
-/* Card hover effect */
+
 .category-card:hover {
   transform: scale(1.05);
 }
 
-/* Header of the card */
 .category-card-header {
   background-color: #f4f4f4;
   padding: 8px 0;
@@ -33,7 +32,7 @@
   font-weight: bold;
 }
 
-/* Description styling */
+
 .category-card-body {
   margin-top: 12px;
   padding-bottom: 16px;
@@ -45,7 +44,7 @@
   text-align: center;
 }
 
-/* Action buttons at the bottom */
+
 .category-card-actions {
   display: flex;
   justify-content: center;
@@ -53,7 +52,7 @@
   margin-top: auto;
 }
 
-/* Button Styling */
+
 button {
   border: none;
   padding: 8px 12px;

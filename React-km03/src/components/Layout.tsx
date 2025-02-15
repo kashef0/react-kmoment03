@@ -1,3 +1,4 @@
+import Footer from "./Footer"
 import Header from "./Header"
 import { Outlet } from "react-router-dom"
 const Layout = () => {
@@ -9,7 +10,7 @@ const Layout = () => {
             <Outlet />
         </main>
 
-        <footer>Det är sidfot.</footer>
+        <Footer />
     </>
   )
 }

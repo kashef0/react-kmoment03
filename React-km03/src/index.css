@@ -1,0 +1,20 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+h1, h2, h3 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+p, li {
+    font-family: sans-serif;
+}
+
+main {
+    display: flex;
+    min-height: 80vh;
+    align-items: center;
+}
