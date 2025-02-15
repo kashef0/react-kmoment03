@@ -10,12 +10,12 @@
     background-color: #f9f9f9; 
   }
 
-  form h2 {
+  .login-form h2 {
     text-align: center;
     padding-bottom: 1rem;
   }
   
-  form {
+  .login-form {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -32,7 +32,7 @@
     border-radius: 4px;
   }
   
-  button {
+  .login-btn {
     padding: 10px;
     background-color: #007bff;
     color: white;
@@ -41,28 +41,27 @@
     cursor: pointer;
   }
   
-  button:disabled {
+  .login-btn:disabled {
     background-color: #ccc;
   }
   
-  button:hover:not(:disabled) {
+  .login-btn:hover:not(:disabled) {
     background-color: #0056b3;
   }
-  
-  /* Style the links */
-  .links {
+
+  .login-links {
     display: flex;
     justify-content: space-between;
     font-size: 14px;
     margin-top: 10px;
   }
   
-  .links a {
+  .login-links a {
     text-decoration: none;
     color: #007bff;
   }
   
-  .links a:hover {
+  .login-links a:hover {
     color: #0056b3;
   }
   

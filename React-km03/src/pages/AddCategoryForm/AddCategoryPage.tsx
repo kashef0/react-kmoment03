@@ -3,6 +3,7 @@ import usePost from "../../Hooks/usePost";
 import { Category } from "../../types/category.types";
 import validationForm from "../../validation/validationForm";
 import "./AddCategoryPage.css";
+import { useNavigate } from "react-router-dom";
 
 interface ErrorForm {
   name: string;
@@ -10,6 +11,7 @@ interface ErrorForm {
 }
 
 const HomePage = () => {
+  const navigate = useNavigate();
   const apiUrl = import.meta.env.VITE_API_URL;
   const {
     data: createdCategory,
@@ -20,11 +22,11 @@ const HomePage = () => {
   const [formData, setFormData] = useState<Category>({
     name: "",
     description: "",
-  }); // Separat state för formulärdata
+  }); 
   const [errorForm, setErrorForm] = useState<ErrorForm>({
     name: "",
     description: "",
-  }); // State för felmeddelanden från formuläret
+  });
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const submitForm = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -42,7 +44,8 @@ const HomePage = () => {
         // Hantera lyckad skapelse (t.ex. återställ formuläret, visa ett meddelande)
         console.log("Kategori skapad:", createdCategory);
         setSuccessMessage("Kategori skapad framgångsrikt!");
-        setTimeout(() => setSuccessMessage(null), 3000);
+        setTimeout(() => (setSuccessMessage(null), navigate('/CategoryPage')), 3000);
+        
         setFormData({ name: "", description: "" }); // Rensa formuläret
       }
     } catch (err) {

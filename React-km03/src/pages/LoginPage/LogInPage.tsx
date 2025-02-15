@@ -30,12 +30,14 @@ const LogInPage = () => {
       setIsLoading(false);
     }
   };
+
+
   return (
     <div className="form-container-login">
         <div className="login-rubrik">
             <h1>Välkomen tillbaka..</h1>
         </div>
-        <form onSubmit={handleSubmit}>
+        <form className="login-form" onSubmit={handleSubmit}>
         <h2>Logga in</h2>
         {error && <p>{error}</p>}
 
@@ -53,11 +55,11 @@ const LogInPage = () => {
         required
         />
 
-        <button type="submit" disabled={isLoading}>
+        <button className="login-btn" type="submit" disabled={isLoading}>
         {isLoading ? "Laddar..." : "Skicka"}
         </button>
 
-        <div className="links">
+        <div className="login-links">
         <a href="/create-account">Skapa konto</a>
         <a href="/forgot-password">Glömt lösenord</a>
         </div>

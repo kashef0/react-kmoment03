@@ -6,10 +6,10 @@ h1 {
   .main-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center everything horizontally */
+    align-items: center;
     width: 100%;
-    max-width: 1200px; /* Optional: Set a max-width for better readability */
-    margin: 0 auto; /* Center the container on the page */
+    max-width: 1200px; 
+    margin: 0 auto; 
   }
   
   .category-container {
@@ -24,9 +24,13 @@ h1 {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 2rem; 
+    margin: 2rem 0 5rem 0; 
   }
   
+  .delete-message {
+    color: red;
+  }
+
   .add-btn {
     width: 150px;
     background-color: #007bff;

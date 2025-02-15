@@ -3,7 +3,7 @@ header {
     justify-content: space-between;
     width: 100%;
     background-color: #333;
-    padding: 1rem;
+
 }
 
 header ul {
@@ -15,7 +15,7 @@ header ul {
 .btn {
     background-color: transparent;
     color: white;
-    text-decoration: none; 
+    text-decoration: none;
     padding: 1.5rem;
     transition: all .3s; 
     
@@ -26,7 +26,7 @@ header ul {
     justify-content: end;
 }
 li {
-    padding: .5rem 0;
+    padding: 1.5rem 0;
     align-self: center;
 }
 
@@ -40,4 +40,30 @@ li {
 .link:hover, .btn:hover {
     background-color: brown;
     
+}
+
+.active {
+    background-color: brown;
+}
+
+@media screen and (max-width: 500px) {
+    header {
+     flex-direction: column !important;
+     padding: 0;
+    }
+ 
+    header ul {
+
+        flex-direction: column !important;
+    }
+
+    li {
+        width: 100%;
+        padding: 0;
+    }
+    .link {
+        display: block;
+        text-align: center;
+    }
+
 }

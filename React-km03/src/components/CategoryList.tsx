@@ -8,9 +8,7 @@ interface CategoryTableProps {
   onUpdate: (category: HandleCategory) => void;
 }
 
-const CategoryTable: React.FC<CategoryTableProps> = ({ categories, onDelete, onUpdate }) => {
-
-
+const CategoryList: React.FC<CategoryTableProps> = ({ categories, onDelete, onUpdate }) => {
   return (
     <div className="card-container">
       <div className="category-card">
@@ -29,9 +27,8 @@ const CategoryTable: React.FC<CategoryTableProps> = ({ categories, onDelete, onU
           </button>
         </div>
       </div>
-  </div>
-  
+    </div>
   );
 };
 
-export default CategoryTable;
+export default CategoryList;

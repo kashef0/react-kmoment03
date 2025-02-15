@@ -6,6 +6,7 @@ import Profile from "./pages/Profile";
 import LogInPage from "./pages/LoginPage/LogInPage";
 import CategoryPage from "./pages/Category/CategoryPage";
 import AddCategoryPage from "./pages/AddCategoryForm/AddCategoryPage";
+import UpdateCategoryForm from "./pages/UpdateCategoryPage";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <CategoryPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/UpdateCategoryForm/:id",
+        element: (
+          <ProtectedRoute>
+            <UpdateCategoryForm />
           </ProtectedRoute>
         ),
       },

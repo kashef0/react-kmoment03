@@ -17,7 +17,7 @@ export default function useGet<T>(url: string, updateStatus: boolean, id?: strin
     useEffect(() => {
         fetchData();  // hämta data
     }, [url, id, updateStatus]); 
-
+    
     // Funktion för att hämta data
     const fetchData = async () => {
         try {

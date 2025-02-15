@@ -4,11 +4,11 @@ import useAuth from "../Hooks/useAuth";
 
 const Header = () => {
   const token = localStorage.getItem("token");
-  const { login, logout } = useAuth();
+  const { logout } = useAuth();
   return (
     <header>
         <ul>
-          <li><NavLink className={"link"} to="/">StartSida</NavLink></li>
+          <li><NavLink className={"link"} to="/">{token? "StartSida": "Blog"}</NavLink></li>
           <li><NavLink className={"link"} to="/Profile">Profil</NavLink></li>
           <li><NavLink className={"link"} to="/CategoryPage">Kategorier</NavLink></li>
         </ul>
