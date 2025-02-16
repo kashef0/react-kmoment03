@@ -4,9 +4,14 @@ import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Profile from "./pages/Profile";
 import LogInPage from "./pages/LoginPage/LogInPage";
-import CategoryPage from "./pages/Category/CategoryPage";
-import AddCategoryPage from "./pages/AddCategoryForm/AddCategoryPage";
-import UpdateCategoryForm from "./pages/UpdateCategoryPage";
+import CategoryPage from "./pages/CategoryPages/CategoryPage";
+import AddCategoryPage from "./pages/CategoryPages/AddCategoryPage";
+import UpdateCategoryForm from "./pages/CategoryPages/UpdateCategoryPage";
+import BlogPage from "./pages/BlogPages/BlogPage";
+import AddBlogPage from "./pages/BlogPages/AddBlogPage";
+import UpdateBlogPage from "./pages/BlogPages/UpdateBlogPage";
+import CreateUserPage from "./pages/UserPages/CreateUserPage";
+
 
 const router = createBrowserRouter([
   {
@@ -20,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "/LoginPage",
         element: <LogInPage />,
+      },
+      {
+        path: "/CreateUserPage",
+        element: <CreateUserPage />,
       },
       {
         path: "/Profile",
@@ -46,6 +55,27 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/BlogPage",
+        element: <BlogPage />
+          
+      },
+      {
+        path: "/AddBlogPage",
+        element: (
+          <ProtectedRoute>
+            <AddBlogPage  />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/UpdateBlogPage/:id",
+        element: (
+          <ProtectedRoute>
+            <UpdateBlogPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
         path: "/AddCategoryPage",
         element: (
           <ProtectedRoute>
@@ -54,7 +84,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "*", // Catch-all route for 404
+        path: "*", 
         element: <h1>404 - Page Not Found</h1>,
       },
     ],

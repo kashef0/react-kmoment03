@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { HandleCategory } from "../types/category.types";
-import usePut from "../Hooks/usePut";
-
-
+import { HandleCategory } from "../../types/category.types";
+import usePut from "../../Hooks/usePut";
 
 const UpdateCategoryForm: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // Extract the `id` from the URL
   console.log("Category ID:", id);
   const navigate = useNavigate();
   const apiUrl = import.meta.env.VITE_API_URL;
-  const { updateData, loading, error } = usePut<HandleCategory>(`${apiUrl}/category/update`);
+  const { updateData, loading, error } = usePut<HandleCategory>(
+    `${apiUrl}/category/update`
+  );
   const [formData, setFormData] = useState<HandleCategory>({
     _id: "",
     name: "",

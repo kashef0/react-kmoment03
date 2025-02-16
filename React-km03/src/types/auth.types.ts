@@ -3,6 +3,11 @@ export interface User {
     username: string,
     email: string
 }
+export interface UsersResponse {
+    message: string;
+    users: User;
+  }
+  
 
 
 export interface LoginCredential{
@@ -23,3 +28,8 @@ export interface AuthContextType {
 
 }
 
+export interface SignupCredential{
+    username: string,
+    email: string,
+    password: string
+}

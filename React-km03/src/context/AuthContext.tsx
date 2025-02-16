@@ -30,10 +30,8 @@ export const AuthProvider: React.FC<AuthProvidersProps> = ( {children} ) => {
             const data = await res.json() as AuthResponse;
             console.log("API Data:", data);
             localStorage.setItem("token", data.token); // spara token i localStorage
-            console.log("User before setUser:", user);
+            localStorage.setItem("user", JSON.stringify(data.user));
             setUser({...data.user}); // sätt användaren
-            console.log("User after setUser:", user);
-
         } catch (error) {
             console.error("Login failed:", error); 
             throw error;
@@ -67,7 +65,6 @@ export const AuthProvider: React.FC<AuthProvidersProps> = ( {children} ) => {
 
             if (res.ok) {
                 const data = await res.json();
-                console.log("this is data: ",data)
                 setUser(data.user); // sätt användaren om token är giltig
             }
         } catch (error) {

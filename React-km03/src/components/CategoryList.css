@@ -59,20 +59,21 @@ button {
   cursor: pointer;
   border-radius: 4px;
   font-size: 14px;
+  color: white;
 }
 
-.update-btn {
-  background-color: #007bff;
-  color: white;
+ .update-btn {
+  background-color: #28a745;
+
 }
 
 .update-btn:hover {
-  background-color: #0056b3;
+  background-color: #218838;
 }
+
 
 .delete-btn {
   background-color: #dc3545;
-  color: white;
 }
 
 .delete-btn:hover {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import './LoginPage.css'
 
@@ -12,7 +12,7 @@ const LogInPage = () => {
 
   useEffect(() => {
     if (user) {
-      navigate("/Profile");
+      navigate("/BlogPage");
     }
   }, [user, navigate]);
 
@@ -60,8 +60,7 @@ const LogInPage = () => {
         </button>
 
         <div className="login-links">
-        <a href="/create-account">Skapa konto</a>
-        <a href="/forgot-password">Glömt lösenord</a>
+        <NavLink to="/CreateUserPage">Skapa konto</NavLink>
         </div>
         </form>
     </div>

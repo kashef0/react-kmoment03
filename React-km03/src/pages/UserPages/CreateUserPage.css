@@ -1,0 +1,84 @@
+.create-user-container {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center horizontally */
+    width: 400px; /* Adjust as needed */
+    margin: 20px auto; /* Center the container */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+.create-user-container h1 {
+    margin-bottom: 20px;
+    color: #333; /* Darker heading color */
+}
+
+.create-user-container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.create-user-container label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555; /* Slightly darker label color */
+}
+
+.create-user-container input[type="text"],
+.create-user-container input[type="email"],
+.create-user-container input[type="password"] {
+    width: calc(100% - 12px); /* Account for padding and border */
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.create-user-container button[type="submit"] {
+    background-color: #007bff; /* Blue button */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 10px; /* Add some space above the button */
+}
+
+.create-user-container button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.create-user-container button[type="submit"]:disabled {
+    background-color: #cccccc; /* Grayed out when disabled */
+    cursor: default;
+}
+
+.create-user-container .error, .error-message {
+    color: red;
+    font-size: 14px;
+    margin: .5rem 0;
+}
+.create-user-container .SuccessMessage {
+    color: rgb(18, 171, 71);
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+
+
+/* Optional: Add some spacing between form elements */
+.create-user-container div {
+    margin-bottom: 15px; /* Adjust as needed */
+}
+
+/* Responsive adjustments (example) */
+@media (max-width: 500px) {
+    .create-user-container {
+        width: 90%;
+    }
+}

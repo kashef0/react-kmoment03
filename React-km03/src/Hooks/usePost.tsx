@@ -35,7 +35,7 @@ export default function usePost<T>(url: string) : {
 
             if (!response.ok) {
                 const errorText = await response.text();
-                throw Error("Fel vid hämtning av data" + response.status + errorText);
+                throw new Error(errorText); 
             }
 
             const responseData = await response.json();  // Spara data
