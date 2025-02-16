@@ -7,18 +7,14 @@ interface BlogListProps {
   blog: HandleBlog; // Acceptera en blogg som en prop
   onDelete: () => void; // Funktion för att hantera borttagning
   onUpdate: (blog: HandleBlog) => void; // Funktion för att hantera uppdatering
-  loading: boolean;
-  errorMessage: string | null
 }
 
-const BlogList: React.FC<BlogListProps> = ({ blog, onDelete, onUpdate, loading, errorMessage }) => {
+const BlogList: React.FC<BlogListProps> = ({ blog, onDelete, onUpdate }) => {
   const token = localStorage.getItem("token");
   const [isReadMore, setIsReadMore] = useState(true);
 
   return (
     <div className="blog-card">
-  {loading && <div className="loading">Laddar...</div>}
-  {errorMessage && <div className="error">Error: {errorMessage}</div>}
   <h3>{blog.title}</h3>
   <div className="meta-info">
     <span>Författare: {blog.author?.username ?? "Unknown"}</span> | 

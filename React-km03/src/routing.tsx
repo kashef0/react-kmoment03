@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Profile from "./pages/Profile";
 import LogInPage from "./pages/LoginPage/LogInPage";
 import CategoryPage from "./pages/CategoryPages/CategoryPage";
 import AddCategoryPage from "./pages/CategoryPages/AddCategoryPage";
@@ -20,7 +19,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomePage />,
+        element: <BlogPage />,
       },
       {
         path: "/LoginPage",
@@ -28,15 +27,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/CreateUserPage",
+        
         element: <CreateUserPage />,
-      },
-      {
-        path: "/Profile",
-        element: (
-          <ProtectedRoute>
-            <Profile />
-          </ProtectedRoute>
-        ),
       },
       {
         path: "/CategoryPage",
@@ -85,7 +77,7 @@ const router = createBrowserRouter([
       },
       {
         path: "*", 
-        element: <h1>404 - Page Not Found</h1>,
+        element: <HomePage />,
       },
     ],
   },

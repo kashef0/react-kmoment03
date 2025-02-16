@@ -20,8 +20,8 @@ export default function useGet<T>(url: string, updateStatus: boolean, id?: strin
     
     // Funktion för att hämta data
     const fetchData = async () => {
+        setLoading(true); 
         try {
-            setLoading(true); 
 
             // bygger url beroende på om ett id är angivet
             let urlWithId = url;

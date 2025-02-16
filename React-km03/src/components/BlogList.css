@@ -71,6 +71,8 @@
   }
   
   .loading {
+    display: flex;
+    flex-direction: column;
     color: #f39c12;
   }
   

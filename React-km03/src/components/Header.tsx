@@ -15,8 +15,6 @@ const Header = () => {
     <header>
         <ul>
           <li><NavLink className={"link"} to="/BlogPage">{token? "StartSida": "Blog"}</NavLink></li>
-          <li><NavLink className={"link"} to="/Profile">Profil</NavLink></li>
-
           {
             token &&
             <li><NavLink className={"link"} to="/CategoryPage">Kategorier</NavLink></li>

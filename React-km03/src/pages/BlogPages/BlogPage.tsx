@@ -21,6 +21,7 @@ const BlogPage: React.FC = () => {
   useEffect(()=> {
     fetchData();
   }, [updateStatus])
+
   // hantera borttagning av blogg
   const handleDelete = async (blogId: string) => {
     if (confirm("Är du säker att du vill ta bort bloggen?")) {
@@ -43,13 +44,17 @@ const BlogPage: React.FC = () => {
     <>
       <div className="main-container">
         <h1>Bloggar</h1>
+        {loading || blogs.length==0 && <div className="loading">
+        <p>Laddar data... </p>
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWYzYzMxNTNqZTRsc3hzenIwcWZyZDdnOTh3ajNpMGdxZzNwNG45MSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/rIq2x7gddEDXL1Vg1X/giphy.gif" alt="loading" />
+      </div>}
         <div className="blog-container">
           {blogs &&
             blogs.map((blog) => {
               const blogWithNames = {
                 ...blog,
-                authorName: blog.author ? blog.author.username : "Unknown",
-                categoryName: blog.category ? blog.category.name : "Uncategorized",
+                authorName: blog.author,
+                categoryName: blog.category,
               };
 
               return (

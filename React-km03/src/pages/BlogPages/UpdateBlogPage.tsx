@@ -85,7 +85,7 @@ const UpdateBlogPage: React.FC = () => {
     const foundCategory = categories.find(category => category._id === cateId);
     return foundCategory && foundCategory.name;
   }
-  console.log(formData)
+
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit}>

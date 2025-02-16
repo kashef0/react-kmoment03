@@ -10,7 +10,7 @@ interface ErrorForm {
   description: string;
 }
 
-const HomePage = () => {
+const AddCategoryPage = () => {
   const navigate = useNavigate();
   const apiUrl = import.meta.env.VITE_API_URL;
   const {
@@ -31,25 +31,22 @@ const HomePage = () => {
   const submitForm = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    const validationError = validationForm(formData); // Validera formuläret och få eventuella fel
-    setErrorForm(validationError); // Sätt felmeddelandena i state
+    const validationError = validationForm(formData); // Validera formuläret 
+    setErrorForm(validationError); 
 
     if (validationError.name || validationError.description) {
       return;
     }
 
     try {
-      await postData(formData); // Skicka formulärdata till API:et
+      await postData(formData); // Skicka formulärdata till server
       if (createdCategory) {
-        // Hantera lyckad skapelse (t.ex. återställ formuläret, visa ett meddelande)
-        console.log("Kategori skapad:", createdCategory);
         setSuccessMessage("Kategori skapad framgångsrikt!");
         setTimeout(() => (setSuccessMessage(null), navigate('/CategoryPage')), 3000);
         
-        setFormData({ name: "", description: "" }); // Rensa formuläret
+        setFormData({ name: "", description: "" }); 
       }
     } catch (err) {
-      // Hantera fel (t.ex. visa felmeddelandet)
       console.error("Fel vid skapande av kategori:", err);
     }
   };
@@ -59,13 +56,12 @@ const HomePage = () => {
       <div className="form-container">
         <form onSubmit={submitForm}>
           {errorForm.name && <p className="error">{errorForm.name}</p>}{" "}
-          {/* Visa felmeddelande för namn */}
           <label htmlFor="name">Titel</label>
           <input
             type="text"
             name="name"
             id="name"
-            value={formData.name} // Använd formData state
+            value={formData.name}
             onChange={(event) =>
               setFormData({ ...formData, name: event.target.value })
             }
@@ -73,13 +69,13 @@ const HomePage = () => {
           {errorForm.description && (
             <p className="error">{errorForm.description}</p>
           )}{" "}
-          {/*  Visa felmeddelande för beskrivning  */}
+          
           <label htmlFor="description">Beskrivning</label>
           <input
             type="text"
             name="description"
             id="description"
-            value={formData.description} // Använd formData state
+            value={formData.description}
             onChange={(event) =>
               setFormData({ ...formData, description: event.target.value })
             }
@@ -91,11 +87,11 @@ const HomePage = () => {
           {successMessage && (
             <p className="success-message">{successMessage}</p>
           )}{" "}
-          {/* Show success message */}
+         
         </form>
       </div>
     </>
   );
 };
 
-export default HomePage;
+export default AddCategoryPage;

@@ -13,7 +13,7 @@ const ProtectedRoute : React.FC<ProtectedRouteProps> = ( {children} ) => {
 
 
     if (!user) {
-        return <Navigate to="/LoginPage" replace />;
+        return <Navigate to="/BlogPage" replace />;
 
     }
     return (
