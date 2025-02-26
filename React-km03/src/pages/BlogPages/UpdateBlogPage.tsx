@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { HandleBlog } from "../../types/blog.types";
 import usePut from "../../Hooks/usePut";
+import useGet from "../../Hooks/useGet";
+import { HandleCategory } from "../../types/category.types";
 
 const UpdateBlogPage: React.FC = () => {
   // hämtar bloggens id från url parametrarna
@@ -9,12 +11,10 @@ const UpdateBlogPage: React.FC = () => {
   const navigate = useNavigate();  // navigeringsfunktion
   const apiUrl = import.meta.env.VITE_API_URL;  
   const { updateData, loading, error } = usePut<HandleBlog>(`${apiUrl}/blog/update`);  // hook för  update förfrågan
-
+  
+ 
   // hämtar användardata från lokal lagring 
   const user = JSON.parse(localStorage.getItem("user") || "{}");
-
-  // state för att lagra kategorier och formdata
-  const [categories, setCategories] = useState<{ _id: string; name: string }[]>([]);
   const [formData, setFormData] = useState<HandleBlog>({
     _id: "",
     title: "",
@@ -24,6 +24,10 @@ const UpdateBlogPage: React.FC = () => {
     createdAt: "",
   });
 
+  const { data: categories } = useGet<HandleCategory[]>(
+    `${apiUrl}/category`,
+    true 
+  );
   useEffect(() => {
     // hämtar bloggens information baserat på id
     const fetchBlog = async () => {
@@ -36,7 +40,7 @@ const UpdateBlogPage: React.FC = () => {
         const blogData = {
           ...data,
           author: data.author || { _id: "", username: "" },  
-          category: data.category || { _id: "", name: "" }, 
+          category: data.category? { _id: data.category, name: "" }: data.category, 
         };
         setFormData(blogData);  
       } catch (error) {
@@ -44,22 +48,7 @@ const UpdateBlogPage: React.FC = () => {
       }
     };
 
-    // hämtar alla kategorier från api
-    const fetchCategories = async () => {
-      try {
-        const response = await fetch(`${apiUrl}/category`);
-        if (!response.ok) {
-          throw new Error("Unable to fetch categories");
-        }
-        const data = await response.json();
-        setCategories(data);  // uppdaterar kategorier i state
-      } catch (error) {
-        console.error(error); 
-      }
-    };
-
     fetchBlog();  // hämtar blogginformation
-    fetchCategories();  // hämtar kategorier
   }, [id, apiUrl]);  
 
   // hanterar formulärsubmit
@@ -70,7 +59,7 @@ const UpdateBlogPage: React.FC = () => {
       console.error("Blog ID is missing."); 
       return;
     }
-    const updatedBlogData = { ...formData };  // kopiera formdata för att uppdatera
+    const updatedBlogData = { ...formData};  // kopiera formdata för att uppdatera
     try {
       await updateData(updatedBlogData, formData._id!);  // skickar uppdaterade blogginformationen
       alert("Bloggen har uppdaterats framgångsrikt."); 
@@ -81,10 +70,10 @@ const UpdateBlogPage: React.FC = () => {
   };
 
   const getCategoryName = (cateId: string) => {
-
+    if (!categories || categories.length === 0) return "Laddar...";
     const foundCategory = categories.find(category => category._id === cateId);
-    return foundCategory && foundCategory.name;
-  }
+    return foundCategory?.name || "Okänd kategori";
+};
 
   return (
     <div className="form-container">
@@ -110,14 +99,15 @@ const UpdateBlogPage: React.FC = () => {
           name="category"
           id="category"
           value={formData.category._id}
-          onChange={(event) =>
+          onChange={(event) => {
+            const selectedCategory = categories.find((category) => category._id === event.target.value) || { _id: "", name: "" };
             setFormData({
               ...formData,
-              category: categories.find((category) => category._id === event.target.value) || { _id: "", name: "" },
+              category: selectedCategory,
             })  // uppdatera vald kategori
-          }
+          }}
         >
-            <option value={formData.category}>{getCategoryName(formData.category)}</option>
+            <option value="">{getCategoryName(formData.category._id)}</option>
           {categories.map((category) => (
             <option key={category._id} value={category._id}>
               {category.name}

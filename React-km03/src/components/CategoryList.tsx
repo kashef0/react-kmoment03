@@ -3,7 +3,7 @@ import { HandleCategory } from "../types/category.types";
 import "./CategoryList.css";
 
 interface CategoryTableProps {
-  categories: HandleCategory;  // Now expecting a single category instead of an array
+  categories: HandleCategory;  
   onDelete: (id: string) => void;
   onUpdate: (category: HandleCategory) => void;
 }

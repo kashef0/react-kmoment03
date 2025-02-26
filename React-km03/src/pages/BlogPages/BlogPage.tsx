@@ -49,6 +49,17 @@ const BlogPage: React.FC = () => {
         <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWYzYzMxNTNqZTRsc3hzenIwcWZyZDdnOTh3ajNpMGdxZzNwNG45MSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/rIq2x7gddEDXL1Vg1X/giphy.gif" alt="loading" />
       </div>}
         <div className="blog-container">
+      {
+            token && 
+            <div className="add-btn-container">
+              <button
+                className="add-btn"
+                onClick={() => navigate("/AddBlogPage")}
+              >
+                Skapa blogg
+              </button>
+            </div>
+          }
           {blogs &&
             blogs.map((blog) => {
               const blogWithNames = {
@@ -63,23 +74,12 @@ const BlogPage: React.FC = () => {
                   blog={blogWithNames} // passera blog 
                   onDelete={() => handleDelete(blog._id)} // passera delete handler
                   onUpdate={handleUpdate} // passera update handler
-                  loading={loading}
                   errorMessage={error}
                 />
               );
             })}
         </div>
-          {
-            token && 
-            <div className="btn-container">
-              <button
-                className="add-btn"
-                onClick={() => navigate("/AddBlogPage")}
-              >
-                Skapa blogg
-              </button>
-            </div>
-          }
+          
       </div>
     </>
   );

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "react-dotenv && react-scripts start",
-    "build": "react-dotenv && react-scripts build",
+    "build": "tsc -b && vite build",
     "serve": "react-dotenv && serve build",
     "dev": "vite",
     "lint": "eslint .",

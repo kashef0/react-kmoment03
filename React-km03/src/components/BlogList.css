@@ -63,6 +63,12 @@
     background-color: #218838;
   }
 
+  .add-btn-container {
+    width: 100%;
+    display: flex;
+    margin: 2rem 0 1rem 1rem;
+  }
+
   .loading, .error {
     text-align: center;
     font-size: 1.2rem;
