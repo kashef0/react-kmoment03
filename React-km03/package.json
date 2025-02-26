@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "react-dotenv && react-scripts start",
+    "start": "vite",
     "build": "tsc -b && vite build",
     "serve": "react-dotenv && serve build",
     "dev": "vite",

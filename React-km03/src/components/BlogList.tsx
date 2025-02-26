@@ -16,7 +16,7 @@ const BlogList: React.FC<BlogListProps> = ({ blog, onDelete, onUpdate, errorMess
 
   return (
     <div className="blog-card">
-      <p>{errorMessage}</p>
+      <p>{errorMessage?? errorMessage}</p>
       <h3>{blog.title}</h3>
       <div className="meta-info">
         <span>Författare: {blog.author?.username ?? "Unknown"}</span> | 
